@@ -65,9 +65,9 @@ function validate(e) {
   }
 
   // Email
-  // const isEmailValid = isEmailValid(emailElt.value) ? true : false;
+  const isEmailValid = isEmailValid(emailElt.value) ? true : false;
 
-  // console.log(isEmailValid);
+  console.log(isEmailValid);
 
   if (!isEmailValid) {
     document.querySelector('.errorEmail').style.display = 'block';
@@ -88,29 +88,31 @@ function validate(e) {
   }
 
 
-  // Vérifier les villes
-
-
-
-  // J'ai lu et accepté les conditions 
-
-
 
   // Verification de tout
   if (isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isQuantityValid && isLocationValid && isCheckbox1Valid) {
-    alert("Merci pour votre inscription");
+    alert("Merci pour votre inscription")
   }
 }
+
+
 
 // Functions
 function isLongEnough(currentLength, minimumLength) {
   return currentLength >= minimumLength ? true : false;
 }
 
-function isEmailValid() {
-  let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
-  let inputValue = document.getElementById("email").value;
-  return regex.test(inputValue);
+function isEmailValid(emailElt) {
+  // let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
+  // let inputValue = document.getElementById("email").value;
+  // return regex.test(inputValue);
+
+  // let email = "test@email.com";
+  // let regex_validation = /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i;
+  // console.log("email valide?" + regex_validation.test(email));
+
+  const isEmailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  return isEmailValid.test(emailElt);
 }
 
 function isBirthdateValid() {
