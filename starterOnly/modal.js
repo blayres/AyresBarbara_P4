@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll(".close");
 const formElt = document.getElementById("form");
+const confirmationCloseBtn = document.querySelectorAll(".close")
 
 // Form elements
 const firstElt = document.getElementById("first");
@@ -28,6 +29,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 closeModalBtn.forEach(elt => elt.addEventListener("click", closeModal));
+confirmationCloseBtn.forEach(elt => elt.addEventListener("click", confirmationClose));
 
 // Validate form
 formElt.addEventListener("submit", validate);
@@ -41,6 +43,10 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = 'none';
 }
+function confirmationClose() {
+  modalbg.style.display = 'none';
+}
+
 
 // Validate form
 function validate(e) {
@@ -51,48 +57,45 @@ function validate(e) {
   // Verifier un par un les champs
 
   // First name
-  const isFirstValid = isLongEnough(firstElt.value.length, 2) ? true : false;
-
-  if (!isFirstValid) {
+  if (!isLongEnough(firstElt.value.length, 2)) {
     document.querySelector('.errorFirstName').style.display = 'block';
   }
 
   // Last name
-  const isLastValid = isLongEnough(lastElt.value.length, 2) ? true : false;
-
-  if (!isLastValid) {
+  if (!isLongEnough(lastElt.value.length, 2)) {
     document.querySelector('.errorLastName').style.display = 'block';
   }
 
   // Email
-  const isEmailValid = isEmailValid(emailElt.value) ? true : false;
-
-  console.log(isEmailValid);
-
-  if (!isEmailValid) {
+  if (!isEmailValid(emailElt.value)) {
     document.querySelector('.errorEmail').style.display = 'block';
   }
 
   // Date de naissance 
-  // const isBirthdateValid = isBirthdateValid(birthdateElt.value) ? true : false;
-
-  if (!isBirthdateValid) {
+  if (!isBirthdateValid(birthdateElt.value)) {
     document.querySelector('.errorBirthdate').style.display = 'block';
   }
 
   // Vérifier nb de tournois
-  // const isQuantityValid = isQuantityValid(quantityElt.value) ? true : false;
-
-  if (!isQuantityValid) {
+  if (!isQuantityValid(quantityElt.value)) {
     document.querySelector('.errorQuantity').style.display = 'block';
   }
 
+  // Choisir la ville
+  if (!isCheckRadioValid(locationElt.value)){
+    document.querySelector('.errorLocation').style.display = 'block';
+  }
+
+  // Checkbox
+  if (!isCheckbox1Valid(checkbox1Elt.value)){
+    document.querySelector('.errorCheckbox1').style.display = 'block';
+  }
 
 
   // Verification de tout
-  if (isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isQuantityValid && isLocationValid && isCheckbox1Valid) {
-    alert("Merci pour votre inscription")
-  }
+  if (isLongEnough(firstElt.value.length, 2) && isLongEnough(lastElt.value.length, 2) && isEmailValid(emailElt.value) && isBirthdateValid(birthdateElt.value) && isQuantityValid(quantityElt.value) && isCheckRadioValid(locationElt.value) && isCheckbox1Valid(checkbox1Elt.value)) {
+    document.querySelector('.modal-confirmation').style.display = 'block';
+   }
 }
 
 
@@ -103,20 +106,12 @@ function isLongEnough(currentLength, minimumLength) {
 }
 
 function isEmailValid(emailElt) {
-  // let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
-  // let inputValue = document.getElementById("email").value;
-  // return regex.test(inputValue);
-
-  // let email = "test@email.com";
-  // let regex_validation = /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i;
-  // console.log("email valide?" + regex_validation.test(email));
-
   const isEmailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   return isEmailValid.test(emailElt);
 }
 
 function isBirthdateValid() {
-  let regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+  let regex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
   let inputValue = document.getElementById("birthdate").value;
   return regex.test(inputValue);
 }
@@ -127,7 +122,7 @@ function isQuantityValid() {
   return regex.test(inputValue);
 }
 
-function isLocationValid() {
+function isCheckRadioValid() {
   let radioButtons = document.querySelectorAll(".checkbox-input[type=radio]");
   for (let radio of radioButtons) {
     if (radio.checked === true) return true;
