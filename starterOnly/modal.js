@@ -9,11 +9,14 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalConfirmBg = document.querySelector('.modal-confirmation')
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll(".close");
 const formElt = document.getElementById("form");
-const confirmationCloseBtn = document.querySelectorAll(".close")
+const closeModal2Btn = document.querySelectorAll(".close")
+const closeModalBtnFermer = document.querySelectorAll(".modal-confirmation-btn")
+
 
 // Form elements
 const firstElt = document.getElementById("first");
@@ -26,10 +29,13 @@ const checkbox1Elt = document.getElementById("checkbox1");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+closeModal2Btn.forEach((btn) => btn.addEventListener("click", launchModal));
+closeModalBtnFermer.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 closeModalBtn.forEach(elt => elt.addEventListener("click", closeModal));
-confirmationCloseBtn.forEach(elt => elt.addEventListener("click", confirmationClose));
+closeModal2Btn.forEach(elt => elt.addEventListener("click", closeModal2));
+closeModalBtnFermer.forEach(elt => elt.addEventListener("click", closeModal3));
 
 // Validate form
 formElt.addEventListener("submit", validate);
@@ -43,10 +49,12 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = 'none';
 }
-function confirmationClose() {
-  modalbg.style.display = 'none';
+function closeModal2() {
+  modalConfirmBg.style.display = 'none';
 }
-
+function closeModal3() {
+  modalConfirmBg.style.display = 'none';
+}
 
 // Validate form
 function validate(e) {

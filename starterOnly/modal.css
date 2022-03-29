@@ -544,6 +544,7 @@ input[data-error]::after {
   z-index: 1;
   left: 0;
   top: 0;
+  bottom: 0;
   height: 100%;
   width: 100%;
   overflow: auto;
@@ -564,8 +565,8 @@ input[data-error]::after {
   padding-top: 10px;
 }
 
-.modal-body {
-  padding: 15px 8%;
+.modal-body-confirmation {
+  padding: 280px 8%;
   margin: 15px auto;
 }
 
