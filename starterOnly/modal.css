@@ -121,6 +121,14 @@ img {
 
 
 @media screen and (max-width: 540px) {
+
+  .topnav{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 0px -25px 0px;
+    padding: 5.5%;
+  }
   .topnav a {
     display: none;
   }
@@ -129,6 +137,11 @@ img {
     float: right;
     display: block;
     margin-top: -15px;
+    color: #ff0000;
+  }
+
+  .header-logo img{
+    width: 60%;
   }
 }
 
@@ -568,6 +581,10 @@ input[data-error]::after {
 .modal-body-confirmation {
   padding: 280px 8%;
   margin: 15px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-confirmation-message {
@@ -575,6 +592,8 @@ input[data-error]::after {
   font-style: normal;
   font-weight: 400;
   line-height: 142.6%;
+  padding: 20px;
+  font-size: 30px;
   /* or 51px */
   align-items: center;
   text-align: center;
@@ -585,7 +604,6 @@ input[data-error]::after {
 .modal-confirmation-btn {
   background: #fe142f;
   margin-top: 0.5em;
-  margin-left: 150px;
   padding: 6px 40px;
   color: #fff;
   font-size: 10px;
@@ -650,6 +668,8 @@ footer {
     text-align: center;
   }
 }
+
+
 
 @keyframes modalopen {
   from {
