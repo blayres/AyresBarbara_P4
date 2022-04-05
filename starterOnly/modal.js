@@ -14,8 +14,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll(".close");
 const formElt = document.getElementById("form");
-const closeModal2Btn = document.querySelectorAll(".close")
-const closeModalBtnFermer = document.querySelectorAll(".modal-confirmation-btn")
+const closeModalConfimationBtn = document.querySelectorAll(".confirmation-close-action")
 
 
 // Form elements
@@ -29,31 +28,36 @@ const checkbox1Elt = document.getElementById("checkbox1");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-closeModal2Btn.forEach((btn) => btn.addEventListener("click", launchModal));
-closeModalBtnFermer.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 closeModalBtn.forEach(elt => elt.addEventListener("click", closeModal));
-closeModal2Btn.forEach(elt => elt.addEventListener("click", closeModal2));
-closeModalBtnFermer.forEach(elt => elt.addEventListener("click", closeModal3));
+closeModalConfimationBtn.forEach(elt => elt.addEventListener("click", closeModalConfirmation));
 
 // Validate form
 formElt.addEventListener("submit", validate);
 
 // launch modal form
+function fixedHeader(){
+  document.querySelector(".topnav").classList.add("fixed");
+}
+
+function disableFixedHeader(){
+  document.querySelector(".topnav").classList.remove("fixed");
+}
+
 function launchModal() {
   modalbg.style.display = "block";
+  fixedHeader();
 }
 
 // CLOSE MODAL FORM
 function closeModal() {
   modalbg.style.display = 'none';
+  disableFixedHeader();
 }
-function closeModal2() {
+function closeModalConfirmation() {
   modalConfirmBg.style.display = 'none';
-}
-function closeModal3() {
-  modalConfirmBg.style.display = 'none';
+  disableFixedHeader();
 }
 
 // Validate form
@@ -102,7 +106,9 @@ function validate(e) {
 
   // Verification de tout
   if (isLongEnough(firstElt.value.length, 2) && isLongEnough(lastElt.value.length, 2) && isEmailValid(emailElt.value) && isBirthdateValid(birthdateElt.value) && isQuantityValid(quantityElt.value) && isCheckRadioValid(locationElt.value) && isCheckbox1Valid(checkbox1Elt.value)) {
+    closeModal();
     document.querySelector('.modal-confirmation').style.display = 'block';
+    fixedHeader();
    }
 }
 

@@ -100,50 +100,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative;
-  }
 
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
-@media screen and (max-width: 540px) {
-
-  .topnav{
-    background-color: #fff;
-    display: flex;
-    justify-content: space-around;
-    margin: 0px 0px -25px 0px;
-    padding: 5.5%;
-  }
-  .topnav a {
-    display: none;
-  }
-
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-    color: #ff0000;
-  }
-
-  .header-logo img{
-    width: 60%;
-  }
-}
 
 main {
   font-size: 130%;
@@ -354,7 +311,7 @@ input[data-error]::after {
   top: 19%;
 }
 
-.close {
+.close, .confirmation-close {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -366,7 +323,9 @@ input[data-error]::after {
 }
 
 .close:before,
-.close:after {
+.close:after, 
+.confirmation-close:before,
+.confirmation-close:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -375,11 +334,13 @@ input[data-error]::after {
   background-color: #fff;
 }
 
-.close:before {
+.close:before,
+.confirmation-close:before {
   transform: rotate(45deg);
 }
 
-.close:after {
+.close:after,
+.confirmation-close:after {
   transform: rotate(-45deg);
 }
 
@@ -679,5 +640,71 @@ footer {
 
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topnav.responsive {
+    position: relative;
+  }
+
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+
+
+@media screen and (max-width: 540px) {
+  .bground, .modal-confirmation{
+    top: 80px;
+  }
+
+  .bground .content, 
+  .modal-confirmation .content{
+    border-radius: 0;
+    height: calc(100vh - 80px);
+    margin: 0;
+  }
+
+  .topnav{
+    z-index: 2;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 0px -25px 0px;
+    padding: 5.5%;
+  }
+
+  .topnav.fixed{
+    position: fixed;
+    width: 100%;
+  }
+
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+    color: #ff0000;
+  }
+
+  .header-logo img{
+    width: 60%;
+  }
+
+  .hero-content{
+    min-width: initial;
   }
 }
