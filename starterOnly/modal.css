@@ -584,6 +584,9 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
+  main{
+    margin: 1px 20px -15px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -592,7 +595,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 20px 0;
   }
 
   .hero-content::after {
@@ -604,13 +607,17 @@ footer {
   }
 
   .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 52px;
+    margin-bottom: -35px;
   }
 
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 102%;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
   }
 
   .hero-img img {
@@ -625,7 +632,7 @@ footer {
   }
 
   .copyrights {
-    margin-top: 50px;
+    margin-top: 15px;
     text-align: center;
   }
 }
@@ -681,7 +688,7 @@ footer {
     display: flex;
     justify-content: space-around;
     margin: 0px 0px -25px 0px;
-    padding: 5.5%;
+    padding: 5.5% 0px;
   }
 
   .topnav.fixed{
@@ -701,7 +708,7 @@ footer {
   }
 
   .header-logo img{
-    width: 60%;
+    width: 50%;
   }
 
   .hero-content{
